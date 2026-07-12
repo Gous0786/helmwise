@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "with-helpers.fullname" . }}
+  labels:
+    {{- include "with-helpers.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "with-helpers.name" . }}
+  template:
+    metadata:
+      labels:
+        {{- include "with-helpers.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ include "with-helpers.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

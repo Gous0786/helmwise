@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: '1.27'
+  pullPolicy: IfNotPresent
+
+service:
+  port: 80
+
+# A value that no template references — helmwise should flag this as a
+# possibly-dead value (touches nothing when perturbed).
+unusedFlag: false

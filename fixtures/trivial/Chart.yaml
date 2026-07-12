@@ -1,0 +1,6 @@
+apiVersion: v2
+name: trivial
+description: A minimal single-Deployment chart for testing helmwise attribution.
+type: application
+version: 0.1.0
+appVersion: '1.0.0'

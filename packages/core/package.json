@@ -1,0 +1,27 @@
+{
+  "name": "@helmwise/core",
+  "version": "0.0.0",
+  "description": "The helmwise engine: deterministic Helm rendering, value→resource attribution, impact diffing, and the AI explanation layer. No CLI or UI dependencies.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": ["helm", "kubernetes", "helmwise"],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "yaml": "^2.6.1"
+  }
+}

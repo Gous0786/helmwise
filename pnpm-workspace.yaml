@@ -1,0 +1,7 @@
+packages:
+  - 'packages/*'
+
+# Allow esbuild (used by tsup) to run its postinstall so pnpm doesn't treat the
+# ignored build as an error. pnpm blocks build scripts by default for security.
+allowBuilds:
+  esbuild: true

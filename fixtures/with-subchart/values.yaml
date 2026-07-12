@@ -1,0 +1,13 @@
+# Parent-owned value.
+frontendReplicas: 1
+
+# Propagated into the subchart under its name. helmwise must treat
+# `backend.*` as first-class value paths that flow into subchart resources.
+backend:
+  image:
+    tag: '2.1'
+  replicas: 3
+
+# A global value: reaches both parent and subchart via .Values.global.
+global:
+  environment: staging

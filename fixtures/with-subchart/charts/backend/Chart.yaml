@@ -1,0 +1,6 @@
+apiVersion: v2
+name: backend
+description: Bundled subchart used to test cross-chart value propagation.
+type: application
+version: 0.1.0
+appVersion: '1.0.0'

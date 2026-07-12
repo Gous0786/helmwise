@@ -1,0 +1,23 @@
+{
+  "name": "helmwise",
+  "version": "0.0.0",
+  "description": "helmwise CLI — trace, explain, document, and diff Helm chart values.",
+  "type": "module",
+  "bin": {
+    "helmwise": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
+  },
+  "keywords": ["helm", "kubernetes", "cli", "helmwise"],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@helmwise/core": "workspace:*",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1"
+  }
+}

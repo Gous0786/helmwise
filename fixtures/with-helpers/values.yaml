@@ -1,0 +1,13 @@
+nameOverride: ''
+replicaCount: 2
+
+image:
+  repository: redis
+  tag: '7.4'
+
+# Used only inside a helper (buildLabels) — proves helmwise attributes values
+# that reach output *through* a named template, not just direct references.
+team: platform
+
+config:
+  logLevel: info
