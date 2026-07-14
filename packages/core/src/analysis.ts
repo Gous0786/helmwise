@@ -23,10 +23,6 @@ export interface AnalyzeOptions {
  * portion runs only when {@link AnalyzeOptions.explain} is set and a provider
  * key is present in the environment.
  *
- * @param chartPath - Filesystem path to the chart directory.
- * @param options - See {@link AnalyzeOptions}.
- * @returns The single, serializable {@link Analysis} object.
- *
  * @remarks Not yet implemented — wired up in Phase 5. The signature exists now
  * so the public contract and module boundary are fixed from the start.
  */

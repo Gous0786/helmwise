@@ -77,3 +77,24 @@ API across Anthropic / Google / OpenAI / others. Provider is auto-detected from
 whichever key is in the environment. Prompts are constructed *from the verified
 attribution map*, so explanations stay tied to real behavior rather than
 hallucinating from YAML.
+
+## Comment style
+
+Modeled on how Zod, the TypeScript compiler, and Vite document their own
+source (verified against real files, not just style guides):
+
+- **Document the contract, not every line.** A TSDoc comment (`/** */`) goes
+  on exported functions/types and on anything whose behavior isn't obvious
+  from its name and signature. Trivial passthroughs and self-explanatory
+  fields don't need one.
+- **Prose over tags.** Explain behavior in 1–3 sentences first. Add
+  `@returns`/`@throws` only when the contract genuinely isn't obvious from the
+  type signature — never `@param` that just repeats the parameter's name and
+  type.
+- **Imperative summary line** — "Render a chart…", "Resolve the `helm`
+  executable…", not "Renders…"/"This function renders…".
+- **`@packageDocumentation`** only on a package's true entry point (e.g.
+  `packages/core/src/index.ts`), never on internal modules.
+- **`//` explains *why*, never *what*.** If a comment just restates the code
+  in words, delete it. Use it for non-obvious rationale, workarounds, or
+  invariants a reader could otherwise miss.
