@@ -6,9 +6,10 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   target: 'node18',
-  // Bundle the workspace core into the CLI output so the published bin is
-  // self-contained; leave third-party deps external.
-  noExternal: ['@helmwise/core'],
+  // Keep dependencies external (including @helmwise/core) so Node resolves them
+  // as real ESM packages at runtime. Bundling them in would inline packages
+  // like `yaml` whose CJS builds use dynamic require(), which breaks in an ESM
+  // bundle. @helmwise/core is a normal dependency and ships alongside the CLI.
   banner: {
     js: '#!/usr/bin/env node',
   },

@@ -27,3 +27,17 @@ export type {
 
 export { analyze } from './analysis.js';
 export type { AnalyzeOptions } from './analysis.js';
+
+// Helm layer (Phase 1): rendering + resource parsing.
+export {
+  render,
+  renderRaw,
+  parseResources,
+  resourceId,
+  locateHelm,
+  buildTemplateArgs,
+  DEFAULT_RELEASE_NAME,
+  HelmNotFoundError,
+  HelmRenderError,
+} from './helm/index.js';
+export type { RenderInput } from './helm/index.js';

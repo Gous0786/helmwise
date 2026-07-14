@@ -87,7 +87,7 @@ Built in small phases, each ending in one runnable capability:
 | Phase | Capability |
 | --- | --- |
 | 0 | Monorepo scaffold, CLI `--help` ✅ |
-| 1 | `render` — list a chart's resources |
+| 1 | `render` — list a chart's resources ✅ |
 | 2 | `values` — flatten values into leaf paths |
 | 3 | `trace` — value→resource attribution (the deterministic core) |
 | 4 | `diff` — impact diffing |

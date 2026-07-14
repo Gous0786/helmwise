@@ -1,12 +1,13 @@
 import type { Command } from 'commander';
 import pc from 'picocolors';
+import { registerRender } from './render.js';
 
 /**
  * Registers the helmwise subcommands on the root program.
  *
- * During Phase 0 every command is a documented stub that prints which build
- * phase implements it. Each phase replaces its stub with a real command
- * module under this folder (one file per command).
+ * Commands are implemented one build phase at a time. Implemented commands
+ * live in their own module under this folder; the rest are documented stubs
+ * that print which phase will deliver them.
  */
 export function registerCommands(program: Command): void {
   const stub =
@@ -20,11 +21,8 @@ export function registerCommands(program: Command): void {
       process.exitCode = 2;
     };
 
-  program
-    .command('render')
-    .description('Render a chart and list its Kubernetes resources')
-    .argument('<chart>', 'path to the Helm chart directory')
-    .action(stub('render', 1));
+  // Phase 1
+  registerRender(program);
 
   program
     .command('values')
