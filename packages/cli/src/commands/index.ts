@@ -1,6 +1,7 @@
 import type { Command } from 'commander';
 import pc from 'picocolors';
 import { registerRender } from './render.js';
+import { registerValues } from './values.js';
 
 /**
  * Registers the helmwise subcommands on the root program.
@@ -24,11 +25,8 @@ export function registerCommands(program: Command): void {
   // Phase 1
   registerRender(program);
 
-  program
-    .command('values')
-    .description('List every leaf value as a dotted path with type and default')
-    .argument('<chart>', 'path to the Helm chart directory')
-    .action(stub('values', 2));
+  // Phase 2
+  registerValues(program);
 
   program
     .command('trace')

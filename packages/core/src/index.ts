@@ -41,3 +41,6 @@ export {
   HelmRenderError,
 } from './helm/index.js';
 export type { RenderInput } from './helm/index.js';
+
+// Values layer (Phase 2): flatten values.yaml into leaf paths.
+export { flattenValues, flattenChartValues } from './values/flatten.js';

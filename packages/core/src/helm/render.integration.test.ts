@@ -10,6 +10,9 @@ const fixtures = resolve(here, '../../../../fixtures');
 // These tests shell out to a real `helm` binary. If helm is not installed,
 // skip rather than fail — the pure unit tests still cover the logic.
 let helmAvailable = false;
+// Generous timeout: locateHelm probes several candidates, each running
+// `helm version` with its own timeout, so the total can exceed vitest's
+// default 10s hook budget when helm is absent or slow to resolve.
 beforeAll(async () => {
   try {
     await locateHelm();
@@ -17,7 +20,7 @@ beforeAll(async () => {
   } catch {
     helmAvailable = false;
   }
-});
+}, 60_000);
 
 describe('render (integration, requires helm)', () => {
   it('renders the trivial chart into a Deployment and a Service', async () => {
