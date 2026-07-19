@@ -12,6 +12,12 @@ export interface RenderInput {
   valuesFiles?: string[];
   /** Inline overrides applied as `--set key=value`. Later keys win. */
   setValues?: Record<string, string>;
+  /**
+   * Inline overrides applied as `--set-string key=value`, forcing the value to
+   * a string so Helm does not coerce e.g. `123` into a number. Used by the
+   * perturbation engine for string-typed leaves.
+   */
+  setStringValues?: Record<string, string>;
   /** Release name passed to helm (affects `.Release.Name` in templates). */
   releaseName?: string;
 }
@@ -34,6 +40,10 @@ export function buildTemplateArgs(input: RenderInput): string[] {
     // Escape commas, which helm treats as --set list separators.
     const escaped = value.replace(/,/g, '\\,');
     args.push('--set', `${key}=${escaped}`);
+  }
+  for (const [key, value] of Object.entries(input.setStringValues ?? {})) {
+    const escaped = value.replace(/,/g, '\\,');
+    args.push('--set-string', `${key}=${escaped}`);
   }
   return args;
 }

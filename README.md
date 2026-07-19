@@ -89,7 +89,7 @@ Built in small phases, each ending in one runnable capability:
 | 0 | Monorepo scaffold, CLI `--help` ✅ |
 | 1 | `render` — list a chart's resources ✅ |
 | 2 | `values` — flatten values into leaf paths ✅ |
-| 3 | `trace` — value→resource attribution (the deterministic core) |
+| 3 | `trace` — value→resource attribution (the deterministic core) ✅ |
 | 4 | `diff` — impact diffing |
 | 5 | `analyze` + `schema` (no AI) |
 | 6 | `explain` + `docs` (AI layer) |

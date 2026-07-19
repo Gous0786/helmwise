@@ -2,6 +2,7 @@ import type { Command } from 'commander';
 import pc from 'picocolors';
 import { registerRender } from './render.js';
 import { registerValues } from './values.js';
+import { registerTrace } from './trace.js';
 
 /**
  * Registers the helmwise subcommands on the root program.
@@ -28,12 +29,8 @@ export function registerCommands(program: Command): void {
   // Phase 2
   registerValues(program);
 
-  program
-    .command('trace')
-    .description('Show which resources and fields a single value flows into')
-    .argument('<chart>', 'path to the Helm chart directory')
-    .argument('<value.path>', 'dotted value path, e.g. image.tag')
-    .action(stub('trace', 3));
+  // Phase 3
+  registerTrace(program);
 
   program
     .command('diff')

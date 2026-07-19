@@ -44,3 +44,13 @@ export type { RenderInput } from './helm/index.js';
 
 // Values layer (Phase 2): flatten values.yaml into leaf paths.
 export { flattenValues, flattenChartValues } from './values/flatten.js';
+
+// Attribution layer (Phase 3): perturbation-based value→field tracing.
+export {
+  traceValue,
+  diffResources,
+  perturbValue,
+  needsSetString,
+  STRING_SENTINEL,
+} from './attribute/index.js';
+export type { TraceResult, FieldChange } from './attribute/index.js';
