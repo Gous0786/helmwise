@@ -54,3 +54,7 @@ export {
   STRING_SENTINEL,
 } from './attribute/index.js';
 export type { TraceResult, FieldChange } from './attribute/index.js';
+
+// Diff layer (Phase 4): impact diffing between two value sets.
+export { diffImpact } from './diff/index.js';
+export type { ImpactResult, SideInput } from './diff/index.js';

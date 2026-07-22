@@ -3,6 +3,7 @@ import pc from 'picocolors';
 import { registerRender } from './render.js';
 import { registerValues } from './values.js';
 import { registerTrace } from './trace.js';
+import { registerDiff } from './diff.js';
 
 /**
  * Registers the helmwise subcommands on the root program.
@@ -32,11 +33,8 @@ export function registerCommands(program: Command): void {
   // Phase 3
   registerTrace(program);
 
-  program
-    .command('diff')
-    .description('Show which resources and fields change between two value sets')
-    .argument('<chart>', 'path to the Helm chart directory')
-    .action(stub('diff', 4));
+  // Phase 4
+  registerDiff(program);
 
   program
     .command('analyze')
